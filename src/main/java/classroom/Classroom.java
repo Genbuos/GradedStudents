@@ -36,14 +36,15 @@ public class Classroom {
     }
 
     // gain an understanding on what this code means
+    //no need for the for loop it is a no loop
     public void addStudent(Student student) {
         ArrayList<Student> students1 = new ArrayList<>();
 
-        for (Student s : students1) {
-            if (Objects.nonNull(s)) {
-                students1.add(s);
-            }
-        }
+//        for (Student s : students1) {
+//            if (Objects.nonNull(s)) {
+//                students1.add(s);
+//            }
+//        }
         students1.add(student);
         this.students = students1.toArray(new Student[students1.size()]);
     }
