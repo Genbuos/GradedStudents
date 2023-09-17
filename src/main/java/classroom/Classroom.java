@@ -36,15 +36,12 @@ public class Classroom {
     }
 
     // gain an understanding on what this code means
-    //no need for the for loop it is a no loop
-    public void addStudent(Student student) {
-        ArrayList<Student> students1 = new ArrayList<>();
 
-//        for (Student s : students1) {
-//            if (Objects.nonNull(s)) {
-//                students1.add(s);
-//            }
-//        }
+    // Array list was empty
+    public void addStudent(Student student) {
+        ArrayList<Student> students1 = new ArrayList<>(Arrays.asList(students));
+
+
         students1.add(student);
         this.students = students1.toArray(new Student[students1.size()]);
     }
@@ -54,7 +51,8 @@ public class Classroom {
 
 //        Find the student with the given first name and last name
         for (Student student : studs) {
-            if (student.getFirstName().equals(firstname) && student.getLastName().equals(lastName)) {
+            if ( student != null && student.getFirstName() != null && student.getLastName() != null &&
+                student.getFirstName().equals(firstname) && student.getLastName().equals(lastName)) {
                 studs.remove(student); // Remove the found student from the ArrayList
                 break; // Exit the loop once a student is removed
             }

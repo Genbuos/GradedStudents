@@ -101,8 +101,14 @@ public class Main {
 
         //getGradeBook
         classroom.getGradeBook();
+        System.out.println();
 
 
+        // addStudent method
+         // When
+        classroom.addStudent(student3);
+        //Then
+        classroom.getGradeBook();
 
 
 
