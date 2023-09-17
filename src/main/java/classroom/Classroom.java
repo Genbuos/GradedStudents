@@ -35,7 +35,7 @@ public class Classroom {
         return totalAverageScore/students.length;
     }
 
-    // gain an understanding on what this code means
+
 
     // Array list was empty
     public void addStudent(Student student) {
@@ -102,9 +102,35 @@ public class Classroom {
         //converting the array of students for easier manipulation.
         ArrayList<Student> studentsAsList = new ArrayList<>(Arrays.asList(students));
         //calculate the maximum average exam score among all students
-        Double maxNumber = studentsAsList.stream()
-                .max((x, y) -> x.getAverageExamScore().compareTo(y.getAverageExamScore()))
+        Double maxNumber =
+                // Stream.max() returns the maximum element of the stream based on the provided Comparator.
+                // A Comparator is a comparison function, which imposes a total ordering on some
+                // collection of objects.
+                          studentsAsList.stream()
+
+                        // max() is a terminal operation which combines stream elements and returns
+                        // a summary result. So, max() is a special case of reduction.
+                        // The method returns Optional instance.
+                                  // Returns the maximum element of this stream according to the provided
+                                  // Comparator.
+                                  // This is a special case of a reduction.
+                                  //This is a terminal operation.
+                                  //an Optional describing the maximum element of this stream,
+                                  // or an empty Optional if the stream is empty
+
+                                  // the lambda expression (a, b) ->  specifies two parameters
+                                  //that we will compare/ in our case student against student
+
+                                  //we are using compareTo(); method from the String class
+                                  // even though we are comparing doubles we are in a stream
+                                  //
+
+                             .max((x, y) -> x.getAverageExamScore().compareTo(y.getAverageExamScore()))
+
+
+                  //The get method is retreiving the optionals Value which is the object Student
                 .get()
+                                  //get the average exam score
                 .getAverageExamScore();
         // calculate the grading curve as the difference between 100 and at the maximum score
         Double gradingCurve = 100 - maxNumber;
@@ -113,14 +139,16 @@ public class Classroom {
             double studentScore = student.getAverageExamScore();
             String grade;
 
-        //Determine the letter grade based on the student's score and the grading curve
+        //Determine the letter grade based on the student's score and the grading curve in specific percentile
+            //ranges. 10th percentile, between 11th and 29th percentile, between 30 and 50th percentile,
+            // between 51st and 89th percentile.
             if (studentScore >= (maxNumber - 0.10 * gradingCurve)) {
                 grade = "A";
-            } else if (studentScore >= (maxNumber - 0.20 * gradingCurve)) {
+            } else if (studentScore >= (maxNumber - 0.29 * gradingCurve)) {
                 grade = "B";
             } else if (studentScore >= (maxNumber - 0.50 * gradingCurve)) {
                 grade = "C";
-            } else if (studentScore >= (maxNumber - 0.70 * gradingCurve)) {
+            } else if (studentScore >= (maxNumber - 0.89 * gradingCurve)) {
                 grade = "D";
             } else {
                 grade = "F";

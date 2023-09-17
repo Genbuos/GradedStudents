@@ -74,14 +74,16 @@ public class Student {
     examscores.set(examNumber, newScore);
     }
 
+    //ANDY POINTED OUT THAT I WAS PREEMPTIVLEY GRABBING THE AVERAGE
     public Double getAverageExamScore(){
         double average = 0;
         double totalScore = 0;
 
         for (Double examScore:examscores) {
             totalScore = totalScore + examScore;
-            average = totalScore / examscores.size();
+
         }
+        average = totalScore / examscores.size();
         return average;
     }
 //OVERIDE the toString(); method by returning a clean representation of the person.
