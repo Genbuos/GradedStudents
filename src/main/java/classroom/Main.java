@@ -100,15 +100,15 @@ public class Main {
 
 
         //getGradeBook
-        classroom.getGradeBook();
-        System.out.println();
+        System.out.println( classroom.getGradeBook());
+
 
 
         // addStudent method
          // When
         classroom.addStudent(student3);
         //Then
-        classroom.getGradeBook();
+       System.out.println( classroom.getGradeBook() );
 
 
 

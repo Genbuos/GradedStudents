@@ -58,8 +58,12 @@ public class Student {
 /*
 *
 * Student should define a method which returns a string representation of all exams taken */
-    public ArrayList<Double> getExamscores() {
-        return examscores;
+    public String getExamscores() {
+        String exam = "Exam scores \n";
+        for (int i = 0; i < examscores.size(); i++){
+            exam +="Exam " + (i+1) + "-> " + examscores.get(i) + "\n";
+        }
+        return exam;
     }
 
     public void setExamscores(ArrayList<Double> examscores) {

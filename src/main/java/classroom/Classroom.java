@@ -18,7 +18,7 @@ public class Classroom {
 
     //Composite students object;
     public Classroom() {
-        students = new Student[30];
+        this.students = new Student[30];
     }
 
     public Student[] getStudents() {
@@ -37,11 +37,9 @@ public class Classroom {
 
 
 
-    // Array list was empty
+
     public void addStudent(Student student) {
         ArrayList<Student> students1 = new ArrayList<>(Arrays.asList(students));
-
-
         students1.add(student);
         this.students = students1.toArray(new Student[students1.size()]);
     }
@@ -98,7 +96,9 @@ public class Classroom {
                 return studentListe.toArray(new Student[0]); // returns an array of Student objects after data manipulation
     }
 
-    public void getGradeBook(){
+    public HashMap<String, String> getGradeBook(){
+
+        HashMap<String, String> gradeBook = new HashMap<>();
         //converting the array of students for easier manipulation.
         ArrayList<Student> studentsAsList = new ArrayList<>(Arrays.asList(students));
         //calculate the maximum average exam score among all students
@@ -154,9 +154,10 @@ public class Classroom {
                 grade = "F";
             }
 
-            System.out.println(student.getFullName(student) + " : " + grade);
+            String fullName = student.getFullName(student);
+            gradeBook.put(fullName, grade);
         }
-
+        return gradeBook;
     }
 
 }
