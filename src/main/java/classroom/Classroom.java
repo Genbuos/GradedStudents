@@ -99,6 +99,8 @@ public class Classroom {
     public HashMap<String, String> getGradeBook(){
 
         HashMap<String, String> gradeBook = new HashMap<>();
+        //Hash table based implementation of the Map Interface.
+        // our key value pairs are k = student.getFullName, v = the grade of the student
         //converting the array of students for easier manipulation.
         ArrayList<Student> studentsAsList = new ArrayList<>(Arrays.asList(students));
         //calculate the maximum average exam score among all students
