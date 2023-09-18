@@ -37,9 +37,7 @@ public class Student {
         return firstName + lastName;
     }
 
-    public Integer getnumberOfExamsTaken(){
-        return examscores.size();
-    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -66,9 +64,7 @@ public class Student {
         return exam;
     }
 
-    public void setExamscores(ArrayList<Double> examscores) {
-        this.examscores = examscores;
-    }
+
 
     public void addExamScore(double examScore){
     examscores.add(examScore);

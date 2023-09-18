@@ -68,6 +68,9 @@ public class Classroom {
         //sorting the arrayList (a part of the collections' framework) with the .sort() method in the
         //Collections class
         //with a Comaparator object to determine the sorting order
+
+        //Comparators can be passed to a sort method (Collections.sort) to allow precise control over the sort
+        //order
       Collections.sort(studentListe, new Comparator<Student>() {
 
           //This code was automatically generated when `new Comparator` was typed
@@ -87,7 +90,8 @@ public class Classroom {
 
               } else {
                    return  o1.getFullName(o1).compareTo(o2.getFullName(o2)); // sorts students with the
-                  //score lexigraphically by their fullnames
+                  //score lexicographically by their fullnames
+                  //compareTo method compares two strings "lexiographically".
 
               }
           }
@@ -120,22 +124,25 @@ public class Classroom {
                                   //an Optional describing the maximum element of this stream,
                                   // or an empty Optional if the stream is empty
 
-                                  // the lambda expression (a, b) ->  specifies two parameters
-                                  //that we will compare/ in our case student against student
 
-                                  //we are using compareTo(); method from the String class
-                                  // even though we are comparing doubles we are in a stream
+
+                                  //the comparing function lets us set up lexicographical ordering
+                                  // of values by provisioning multiple sort keys in a particular sequencing.
                                   //
+                                        // comparing() is comparing the student objects in the list
+                                        // based on their average exam score
+                             .max(Comparator.comparing(Student::getAverageExamScore))
 
-                             .max((x, y) -> x.getAverageExamScore().compareTo(y.getAverageExamScore()))
 
-
-                  //The get method is retreiving the optionals Value which is the object Student
+                  //The get method is retrieving the optionals Value which is the object Student
                 .get()
                                   //get the average exam score
                 .getAverageExamScore();
         // calculate the grading curve as the difference between 100 and at the maximum score
-        Double gradingCurve = 100 - maxNumber;
+        // a common method for creating a gradecurve is finding the difference
+        // between the highest grade in the class (thanks to .max()) and the highest possible score
+
+        Double gradingCurve = maxNumber - 100 ;
         //iterate through students
         for (Student student: students) {
             double studentScore = student.getAverageExamScore();
