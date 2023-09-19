@@ -39,9 +39,31 @@ public class Classroom {
 
 
     public void addStudent(Student student) {
-        ArrayList<Student> students1 = new ArrayList<>(Arrays.asList(students));
-        students1.add(student);
-        this.students = students1.toArray(new Student[students1.size()]);
+       if(students == null){
+           students = new Student[1];
+           students [0] = student;
+       } else{
+           boolean added = false;
+
+           for (int i =0; i < students.length; i++){
+               if (students[i] == null){
+                   students[i] = student;
+                   added = true;
+                   break;
+               }
+           }
+
+           if(!added){
+               int currentSize = students.length;
+               Student[] newStudents = new Student[currentSize + 1];
+
+               System.arraycopy(students, 0, newStudents, 0, currentSize);
+
+               newStudents[currentSize] = student;
+
+               students = newStudents;
+           }
+       }
     }
 
     public void removeStudent(String firstname, String lastName){
